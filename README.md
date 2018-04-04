@@ -1,22 +1,6 @@
 # Models of Exception Control Flow
 
-Code examples accompanying a blog post series.
-
-## Haskell Workflow
-
-Assumes you have `make` and `ghc` installed and on your path.
-
-This project uses a _Makefile_. Run any of the below make targets by invoking `make <target>` from the _haskell_ directory, or (optionally) continually run any of the make targets by invoking `watch make <target>`.
-
-**Make Targets:**
-
-  - _all:_ Run the automated tests. Alias for _test_.
-
-  - _test:_ Run the automated tests.
-
-  - _repl:_ Open a _GHCi_ REPL, with the contents of _Spec.hs_, _Test.hs_, and _Undefined.hs_ in global scope and the contents of _Continuations.hs_, _Eithers.hs_, and _Transformers.hs_ scoped to `Continuations`, `Eithers`, and `Transformers` respectively.
-
-  _check:_ Parse and typecheck all source files without compiling. Use with `watch` while editing files for quick feedback.
+Code examples accompanying a blog post series by Daniel Brice.
 
 ## Scala Workflow
 
@@ -37,3 +21,19 @@ This project uses a _Makefile_. Run any of the below make targets by invoking `m
   - _repl:_ _compile_, and Open a Scala REPL with all source files in scope.
 
   - _check:_ Parse and typecheck all source files without compiling. Use with `watch` while editing files for quick feedback.
+
+## Haskell Workflow
+
+Assumes you have `make` and `ghc` installed and on your path.
+
+This project uses a _Makefile_. Run any of the below make targets by invoking `make <target>` from the _haskell_ directory, or (optionally) continually run any of the make targets by invoking `watch make <target>`.
+
+**Make Targets:**
+
+  - _all:_ Run the automated tests. Alias for _test_.
+
+  - _test:_ Run the automated tests.
+
+  - _repl:_ Open a _GHCi_ REPL, with the contents of _Spec.hs_, _Test.hs_, and _Undefined.hs_ in global scope and the contents of _Continuations.hs_, _Eithers.hs_, and _Transformers.hs_ scoped to `Continuations`, `Eithers`, and `Transformers` respectively.
+
+  _check:_ Parse and typecheck all source files without compiling. Use with `watch` while editing files for quick feedback.
