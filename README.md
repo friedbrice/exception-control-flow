@@ -6,7 +6,7 @@ Code examples accompanying a blog post series by Daniel Brice.
 
 Assumes you have `make` and `scala` installed and on your path.
 
-This project uses a _Makefile_. Run any of the below make targets by invoking `make <target>` from the _scala_ directory.
+This project uses a _Makefile_. Run any of the below make targets by invoking `make <target>` from the _scala_ directory, or (optionally) continually run any of the make targets by invoking `watch make <target>`.
 
 **Make Targets:**
 
