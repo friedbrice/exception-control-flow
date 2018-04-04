@@ -1,0 +1,26 @@
+#!/bin/sh
+
+set -e
+
+echo "Validating build..."
+(
+  PROCS_54378290=( )
+  (
+    cd haskell
+    make clean
+    make all && make clean
+    make test && make clean
+    make check && make clean
+  ) & PROCS_54378290+=( $! ) && (
+    cd scala
+    make clean
+    make all && make clean
+    make compile && make clean
+    make test && make clean
+    make check && make clean
+  ) & PROCS_54378290+=( $! )
+  for PROC in "${PROCS_54378290[@]}"; do
+    wait "$PROC" || exit
+  done
+)
+echo "Build looks good, go ahead and push."
