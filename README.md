@@ -36,4 +36,4 @@ This project uses a _Makefile_. Run any of the below make targets by invoking `m
 
   - _repl:_ Open a _GHCi_ REPL, with the contents of _Spec.hs_, _Test.hs_, and _Undefined.hs_ in global scope and the contents of _Continuations.hs_, _Eithers.hs_, and _Transformers.hs_ scoped to `Continuations`, `Eithers`, and `Transformers` respectively.
 
-  _check:_ Parse and typecheck all source files without compiling. Use with `watch` while editing files for quick feedback.
+  - _check:_ Parse and typecheck all source files without compiling. Use with `watch` while editing files for quick feedback.
