@@ -1,4 +1,4 @@
-# Models of Exception Control Flow 
+# Models of Exception Control Flow  
 
 Code examples accompanying a blog post series by Daniel Brice.
 
