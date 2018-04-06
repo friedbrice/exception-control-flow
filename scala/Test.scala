@@ -11,14 +11,14 @@ object Test extends App {
   val expected3: Response = notAllowed("FOO")
 
   def assert(msg: String, p: Boolean): Unit =
-    if (p) println(s"    Passed: $msg") else throw new Exception(msg)
+    if (p) println(s"\tPassed: $msg") else throw new Exception(msg)
 
   def testHandler(name: String, handler: Request => Response): Unit = {
     println(s"Testing $name:")
 
     def testCase(desc: String, input: Request, expected: Response): Unit = {
       val actual = handler(input)
-      println(s"    $actual")
+      println(s"\t$actual")
       assert(desc, actual == expected)
     }
 

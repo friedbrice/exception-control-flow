@@ -2,7 +2,7 @@
 
 set -e
 
-echo "Validating build..."
+echo "Validating 'Makefile's...\n"
 (
   PROCS_54378290=( )
   (
@@ -23,4 +23,4 @@ echo "Validating build..."
     wait "$PROC" || exit
   done
 )
-echo "Build looks good, go ahead and push."
+echo "\n'Makefile's look good."

@@ -14,7 +14,7 @@ expected2 = noToken
 expected3 = notAllowed "FOO"
 
 assert :: String -> Bool -> IO ()
-assert msg p = if p then putStrLn ("    Passed: " ++ msg) else error msg
+assert msg p = if p then putStrLn ("\tPassed: " ++ msg) else error msg
 
 testHandler :: String -> (Request -> IO Response) -> IO ()
 testHandler name handler = do
@@ -22,7 +22,7 @@ testHandler name handler = do
 
   let testCase desc input expected = do 
       actual <- handler input
-      putStrLn $ "    " ++ show actual
+      putStrLn $ "\t" ++ show actual
       assert "desc" $ actual == expected
 
   testCase "should handle requests with no body" request1 expected1
