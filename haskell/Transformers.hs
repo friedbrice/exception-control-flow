@@ -2,11 +2,12 @@
 
 module Transformers where
 
-import Project
+import Spec
 import Control.Monad.Except (MonadError, throwError, runExceptT)
 import Control.Monad.IO.Class (MonadIO, liftIO)
 import Data.Functor.Identity (runIdentity)
 
+implies :: MonadError e m => Bool -> e -> m ()
 failure `implies` fallback = if failure then throwError fallback else return ()
 
 getUser :: MonadError Response m => Request -> m User

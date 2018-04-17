@@ -30,11 +30,10 @@ This project uses a _Makefile_. Run any of the below make targets by invoking `m
 
 **Make Targets:**
 
-  - _all:_ Run the automated tests. Alias for _test_.
+  - _all:_ Alias for _test_.
 
   - _test:_ Run the automated tests.
 
   - _repl:_ Open a _GHCi_ REPL, with the contents of _Spec.hs_, _Test.hs_, and _Undefined.hs_ in global scope and the contents of _Continuations.hs_, _Eithers.hs_, and _Transformers.hs_ scoped to `Continuations`, `Eithers`, and `Transformers` respectively.
 
   - _check:_ Parse and typecheck all source files without compiling. Use with `watch` while editing files for quick feedback.
-  

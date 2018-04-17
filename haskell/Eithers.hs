@@ -1,10 +1,16 @@
 module Eithers where
 
-import Project
+import Spec
 import Control.Monad (join)
 
+implies :: Bool -> e -> Either e ()
 failure `implies` fallback = if failure then Left fallback else Right ()
+
+implies' :: IO Bool -> e -> IO (Either e ())
 failures `implies'` fallback = (`implies` fallback) <$> failures
+
+tunnel :: Either e (IO (Either e a)) -> IO (Either e a)
+tunnel eitherIoEither = join <$> sequenceA eitherIoEither
 
 getUser :: Request -> Either Response User
 getUser (Request _ _ _ header) = do
@@ -27,14 +33,12 @@ execute method body usr (Resource path) = do
   return ((not <$> executed) >>= (`implies` badConnection))
 
 handlePost :: Request -> IO Response
-handlePost req@(Request path method body _) = either id id <$> result
-  where
-    tunnel eitherIoEither = join <$> sequenceA eitherIoEither
-    chkMth = (method /= "POST") `implies` notAllowed method
-    errBdy = null body `implies` noBody >> return body
-    errUsr = getUser req
-    precon = chkMth >> errBdy >> errUsr >> return ()
-    result = do
-      errSrc <- tunnel (getResource <$> precon <*> pure req)
-      errExe <- tunnel (execute <$> precon <*> errBdy <*> errUsr <*> errSrc)
-      return (errExe >> return (success path body))
+handlePost req@(Request path method body _) = either id id <$> result where
+  chkMth = (method /= "POST") `implies` notAllowed method
+  errBdy = null body `implies` noBody >> return body
+  errUsr = getUser req
+  precon = chkMth >> errBdy >> errUsr >> return ()
+  result = do
+    errSrc <- tunnel (getResource <$> precon <*> pure req)
+    errExe <- tunnel (execute <$> precon <*> errBdy <*> errUsr <*> errSrc)
+    return (errExe >> return (success path body))

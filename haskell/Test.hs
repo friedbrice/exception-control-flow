@@ -1,6 +1,6 @@
 module Test where
 
-import Project
+import Spec
 import qualified Continuations
 import qualified Eithers
 import qualified Transformers
@@ -23,7 +23,7 @@ testHandler name handler = do
   let testCase desc input expected = do 
       actual <- handler input
       putStrLn $ "\t" ++ show actual
-      assert "desc" $ actual == expected
+      assert desc $ actual == expected
 
   testCase "should handle requests with no body" request1 expected1
   testCase "should handle requests with no auth" request2 expected2

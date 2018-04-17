@@ -1,6 +1,6 @@
 module Continuations where
 
-import Project
+import Spec
 
 getUser :: Request -> (User -> IO Response) -> IO Response
 getUser (Request _ _ _ header) cont =
