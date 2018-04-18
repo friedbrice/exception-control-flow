@@ -11,11 +11,11 @@ getUser (Request _ _ _ header) cont =
       if is_user_not_found then return (noUser token) else
       cont the_user
 
-getResource :: Request -> (IO Resource -> IO Response) -> IO Response
+getResource :: Request -> (Resource -> IO Response) -> IO Response
 getResource (Request path _ _ _) cont =
   is_resource_not_found_io >>= \notFound ->
   if notFound then return (noResource path) else
-  cont the_resource_io
+  the_resource_io >>= cont
 
 execute :: String -> User -> Resource -> (() -> IO Response) -> IO Response
 execute body usr src@(Resource path) cont =
@@ -30,6 +30,6 @@ handlePost req@(Request path method body _) =
   if method /= "POST" then return (notAllowed method) else
   if null body then return noBody else
   getUser req (\usr ->
-  getResource req (\ioSrc -> ioSrc >>= \src ->
+  getResource req (\src ->
   execute body usr src (\_ ->
   return (success path body))))
