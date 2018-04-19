@@ -4,6 +4,7 @@ import Spec
 import qualified Continuations
 import qualified Eithers
 import qualified Transformers
+import qualified Simple
 
 request1 = Request "path" "POST" "" [("Authorization", "hunter2")]
 request2 = Request "path" "POST" "body" [("Nope", "nada")]
@@ -37,4 +38,5 @@ main = do
   testHandler "Continuations" Continuations.handlePost
   testHandler "Eithers" Eithers.handlePost
   testHandler "Transformers" Transformers.handlePost
+  testHandler "Simple" Simple.handlePost
   putStrLn "All tests pass.\n"
