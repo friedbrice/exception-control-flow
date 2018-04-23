@@ -5,10 +5,10 @@ import Spec
 getUser :: Request -> Either Response User
 getUser (Request _ _ _ header) = case lookup "Authorization" header of
   Nothing -> Left noToken
-  Just token -> case (is_malformed_token, is_user_not_found) of
-    (True, _) -> Left (malformedToken token)
-    (_, True) -> Left (noUser token)
-    _ -> Right the_user
+  Just token ->
+    if is_malformed_token then Left (malformed token)
+    else if is_user_not_found then Left (noUser token)
+    else Right the_user
 
 getResource :: Request -> IO (Either Response Resource)
 getResource (Request path _ _ _) = do
