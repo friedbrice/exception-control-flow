@@ -6,7 +6,7 @@ getUser :: Request -> Either Response User
 getUser (Request _ _ _ header) = case lookup "Authorization" header of
   Nothing -> Left noToken
   Just token ->
-    if is_malformed_token then Left (malformed token)
+    if is_malformed_token then Left (malformedToken token)
     else if is_user_not_found then Left (noUser token)
     else Right the_user
 
