@@ -1,4 +1,4 @@
-# Models of Exception Control Flow  
+# Models of Exception Control Flow
 
 Code examples accompanying a blog post series by Daniel Brice.
 
@@ -24,7 +24,7 @@ This project uses a _Makefile_. Run any of the below make targets by invoking `m
 
 ## Haskell Workflow
 
-Assumes you have `make` and `ghc` installed and on your path.
+Assumes you have `make` and `haskell-platform` installed.
 
 This project uses a _Makefile_. Run any of the below make targets by invoking `make <target>` from the _haskell_ directory, or (optionally) continually run any of the make targets by invoking `watch make <target>`.
 
